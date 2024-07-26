@@ -1,0 +1,90 @@
+* year: 年
+* Abrahamic:アブラハム界隈
+* Christianity: キリスト教
+* chrstprot: Protestant
+プロテスタントのキリスト教徒の数
+* chrstcat: Catholic
+カトリックのキリスト教徒の数
+* chrstorth: Orthodox
+東方正教会のキリスト教徒の数
+* chrstang: Anglican
+アングリカンのキリスト教徒の数
+* chrstothr: Others
+その他のキリスト教徒の数
+* chrstgen: 総キリスト教徒の数
+
+* Judaism: ユダヤ教
+* judorth: Orthodox
+正統派ユダヤ教徒の数
+* jdcons: Conservatives
+保守派ユダヤ教徒の数
+* judref: Reformer
+改革派ユダヤ教徒の数
+* judothr: Others
+その他のユダヤ教徒の数
+* judgen: 総ユダヤ教徒の数
+
+* Islam: イスラム教
+* islmsun: Sunni
+スンニ派イスラム教徒の数
+* islmshi: Shiite
+シーア派イスラム教徒の数
+* islmibd: Ibadi
+イバード派イスラム教徒の数(スンニ派とシーア派の中間的な教義)
+* islmnat: Druze(ドゥルーズ派として知られる)
+ナティーク派イスラム教徒の数
+* islmalw: Alawite
+アラウィー派イスラム教徒の数
+* islmahm: Ahmadiyya
+アフマディーヤ派イスラム教徒の数
+* islmothr: Others
+その他のイスラム教徒の数
+* islmgen: 総イスラム教徒の数
+
+
+*  Eastern(dharmic)religion: 東洋(インド)宗教
+* Buddhism: 仏教
+* budmah: Mahayana
+大乗仏教徒の数
+* budthr: Theravada
+上座部仏教徒の数
+* budothr: Others
+その他の仏教徒の数
+* budgen: 総仏教徒の数
+
+* zorogen: Zoroastrianism
+ゾロアスター教徒の数
+
+* hindgen: Hindus
+ヒンドゥー教徒の数(シャクティ派とヴィシュヌ派ない)
+* sikhgen: Sikhs
+シク教徒の数
+* shntgen: Shintoists
+神道教徒の数
+* jaingen: Jainism
+ジャイナ教徒の数(インド)
+
+
+* bahgen: Baha'is
+バハイ教徒の数(イラン発祥だが、イラン政府には認められていない
+イスラム教から生まれた世界宗教だが、独立しているので2レベル)
+
+*Chinese Folk Religions: 中国から生まれた
+* taogen: Taoism
+道教徒の数(中国から伝わる)
+* confgen: Confucians
+儒教徒の数(中国から伝わる)
+
+* syncgen: Syncretism
+複数宗教を信仰する人の数
+起源の異なる複数の宗教的要素が習合して信仰されていること。
+神道と仏教の習合、道教と仏教の習合、
+ヒンズー教と仏教の習合など、さまざまな形態がある。諸教混淆。 
+* anmgen: Animistic
+アニミズム信仰者の数
+* nonrelig: Non-religious
+無宗教者の数
+
+* othrgen: Other
+その他の宗教を信仰する人の数
+* sumrelig: 総宗教人口

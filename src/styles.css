@@ -1,16 +1,82 @@
-/* .chart-container {
-  position: relative;
-  margin: auto;
-} */
+body {
+  background-color: #e0d9ec;
+  margin: 0;
+  padding: 0;
+  user-select: none;
 
-.axis-label {
-  transition: transform 0.5s ease;
+  /* 背景 */
+}
+.header {
+  background-color: #454545;
+  color: white;
+  display: flex;
+  padding: 5px;
 }
 
 .circle {
-  transition: cx 0.5s ease, cy 0.5s ease;
+  cursor: pointer;
+  /* transition: fill-opacity 0.3s ease, d 0.3s ease; */
+  transition: d 3s ease;
 }
 
-.legend-item {
+.circle:hover {
+  fill-opacity: 0.8;
+}
+
+/* 追加 */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+.button {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  padding: 8px 16px;
+  /* ボタンの内外の余白と境界線を設定 */
+  /* margin: 10px 5px; */
+  /* border: 1; */
+  background-color: #626bd2; /* Green */
+  color: white;
   cursor: pointer;
+  /* ポインタがホバーしたときにカーソルが指の形になる */
+  border-radius: 4px;
+  /* ボタンの角を丸くする。 */
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #454545;
+  /* ホバー時の背景色 */
+  transform: scale(1.05);
+  /* ホバー時にボタンを1.05倍に拡大 */
+}
+
+button:disabled {
+  /* ボタンが無効化されたときの処理 */
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.slider {
+  background-color: #626bd2;
+}
+
+.box {
+  width: 550px;
+  height: 100px;
+}
+
+/* スケール設定 */
+.controls-container {
+  width: 450px;
 }
