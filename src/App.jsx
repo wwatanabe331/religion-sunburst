@@ -136,7 +136,7 @@ const App = () => {
           </div>
         </div>
 
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, maxWidth: "100%" }}>
           {/* ボタンを消した*/}
           {/* <div style={{ transform: "translate(-100px, 0px)" }}> */}
           <div
