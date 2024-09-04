@@ -8,18 +8,18 @@ const Chart = ({
   setReligionInfo,
   religionInfoData,
   setSelectedReligion,
+  width = 700,
+  height = 700,
 }) => {
   const [selectedSegment, setSelectedSegment] = useState(null);
 
-  const contentWidth = 700;
-  const contentHeight = 700;
-  const radius = contentWidth / 2;
+  const radius = Math.min(width, height) / 2.1;
   const color = d3.scaleOrdinal(d3.schemeSet3);
 
   useEffect(() => {
     setSelectedSegment(null);
     setSelectedValue(null);
-    setReligionInfo("");
+    setReligionInfo("データが選択されていません");
   }, [data]);
 
   if (!data) {
@@ -77,7 +77,8 @@ const Chart = ({
     } else {
       setSelectedSegment(d);
       setSelectedValue(formatNumber(d.value));
-      const info = findReligionInfo(d.data.name, religionInfoData.Religions);
+      // const info = findReligionInfo(d.data.name, religionInfoData.Religions);
+      const info = findReligionInfo(d.data.name, religionInfoData.宗教);
       setReligionInfo(info || `No information available for ${d.data.name}`);
       setSelectedReligion(d.data.name);
     }
@@ -86,12 +87,12 @@ const Chart = ({
   const handleChartClick = () => {
     setSelectedSegment(null);
     setSelectedValue(null);
-    setReligionInfo("");
+    setReligionInfo("データが選択されていません");
   };
 
   return (
-    <svg width={contentWidth} height={contentHeight} onClick={handleChartClick}>
-      <g transform={`translate(${contentWidth / 2}, ${contentHeight / 2})`}>
+    <svg width={width} height={height} onClick={handleChartClick}>
+      <g transform={`translate(${width / 2}, ${height / 2})`}>
         {root
           .descendants()
           .filter((d) => d.depth)
@@ -113,7 +114,7 @@ const Chart = ({
       <g
         textAnchor="middle"
         fontSize={13}
-        transform={`translate(${contentWidth / 2}, ${contentHeight / 2})`}
+        transform={`translate(${width / 2}, ${height / 2})`}
       >
         {root
           .descendants()

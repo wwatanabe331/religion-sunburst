@@ -50,7 +50,7 @@ const PopulationChart = ({ data, selectedReligion }) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={250}>
+    <ResponsiveContainer width="100%" height={225}>
       <LineChart data={chartData}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="year" />

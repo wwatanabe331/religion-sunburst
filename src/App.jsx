@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { createRoot } from "react-dom/client";
 import Chart from "./Chart";
-import PopulationChart from "./PopulationChart"; // 新しく作成するコンポーネント
+import PopulationChart from "./PopulationChart";
 import "./styles.css";
 import { Slider } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import religionInfoData from "./religion_info.json";
+import religionInfoData from "/public/religion_info.json";
+import initialData from "/public/data.json";
 
-function valuetext(value) {
+//変更2
+const valuetext = (value) => {
   return `${value}年`;
-}
+};
 
 const CustomizedSlider = styled(Slider)`
   color: #626bd2;
@@ -19,28 +20,33 @@ const CustomizedSlider = styled(Slider)`
   }
 `;
 
+const marks = [
+  { value: 1950, label: "1950年" },
+  { value: 1960, label: "1960年" },
+  { value: 1970, label: "1970年" },
+  { value: 1980, label: "1980年" },
+  { value: 1990, label: "1990年" },
+  { value: 2000, label: "2000年" },
+  { value: 2010, label: "2010年" },
+];
+
 const App = () => {
   const [data, setData] = useState(null);
   const [year, setYear] = useState(1945);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
   const [selectedValue, setSelectedValue] = useState(null);
   const [religionInfo, setReligionInfo] = useState("");
   const [showPopulationChart, setShowPopulationChart] = useState(false);
   const [selectedReligion, setSelectedReligion] = useState(null);
-  const [fullData, setFullData] = useState(null);
+  //変更1
+  const [fullData] = useState(initialData);
 
   useEffect(() => {
-    fetch("src/data.json")
-      .then((response) => response.json())
-      .then((fetchedData) => {
-        setFullData(fetchedData);
-        const selectedYearData = fetchedData.children.find(
-          (item) => item.name === year
-        );
-        setData(selectedYearData);
-      })
-      .catch((error) => console.error("Error loading data:", error));
-  }, [year]);
+    const selectedYearData = fullData.children.find(
+      (item) => item.name === year
+    );
+    setData(selectedYearData);
+  }, [year, fullData]);
 
   // 自動再生機能の制御
   useEffect(() => {
@@ -48,10 +54,10 @@ const App = () => {
     if (isAutoPlay) {
       interval = setInterval(() => {
         setYear((prevYear) => {
-          const newYear = prevYear < 2010 ? prevYear + 5 : 1945; // Loop back to 1945 if the year exceeds 2010
+          const newYear = prevYear < 2010 ? prevYear + 5 : 1945;
           return newYear;
         });
-      }, 300); // スピードを300ミリ秒に設定
+      }, 300);
     }
     return () => clearInterval(interval);
   }, [isAutoPlay]);
@@ -67,124 +73,142 @@ const App = () => {
     setIsAutoPlay(false); // スライダーで変更された場合は自動再生を停止する
   };
 
-  const handleToggleChart = () => {
-    setShowPopulationChart(!showPopulationChart);
-  };
+  // const handleToggleChart = () => {
+  //   setShowPopulationChart(!showPopulationChart);
+  // };
 
   return (
     <div>
       <div className="header">
         <h1>Religion Sunburst</h1>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-        }}
-      >
-        <div style={{ position: "relative", width: "700px", height: "700px" }}>
+      <div style={{ display: "flex" }}>
+        <div>
           <Chart
-            data={data}
+            data={data} // 年ごとのデータを渡す
             setSelectedValue={setSelectedValue}
             setReligionInfo={setReligionInfo}
             religionInfoData={religionInfoData}
             setSelectedReligion={setSelectedReligion}
+            // ここでサンバースト描画のサイズも設定したら、UIコンポーネントを学上で楽だと思い変更
+            width={700}
+            height={700}
           />
+
+          {selectedValue !== null && (
+            <div
+              style={{
+                background: "white",
+                padding: "5px",
+                borderRadius: "3px",
+                boxShadow: "0  5px rgba(0,0,0,0.3)",
+                width: "200px",
+                transform: `translate(5px, -700px)`,
+              }}
+            >
+              人口: {selectedValue}
+            </div>
+          )}
         </div>
-        {selectedValue !== null && (
-          <div
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: "10px",
-              background: "white",
-              padding: "5px",
-              borderRadius: "3px",
-              boxShadow: "0 0 5px rgba(0,0,0,0.3)",
-              transform: `translate(0px, 100px)`,
-            }}
-          >
-            Value: {selectedValue}
-          </div>
-        )}
 
         <div
-          className="controls-container"
-          style={{ transform: `translate(-130px, 0px)` }}
-        >
-          <div className="box">
-            {[
-              1945, 1950, 1955, 1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995,
-              2000, 2005, 2010,
-            ].map((yr) => (
-              <button
-                key={yr}
-                onClick={() => {
-                  setYear(yr);
-                  setIsAutoPlay(false);
-                }}
-                style={{
-                  margin: "5px 5px",
-                  transform: `translate(-50px, 150px)`,
-                }}
-              >
-                {yr}
-              </button>
-            ))}
-          </div>
 
-          <div style={{ transform: "translate(-20px, 150px)" }}>
+        // className="controls-container"
+        // style={{ transform: `translate(-130px, 0px)` }}
+        >
+          {/* ボタンを消した*/}
+          {/* <div style={{ transform: "translate(-100px, 0px)" }}> */}
+          <div>
             <CustomizedSlider
               aria-label="Year"
-              style={{ width: "300px", height: "2px" }}
+              style={{ width: "628px", height: "15px", margin: "0 36px" }}
               defaultValue={1945}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
+              // 追加
+              marks={marks}
               step={5}
-              marks
               min={1945}
               max={2010}
               value={year}
               onChange={handleYearChange}
             />
-            <p style={{ transform: "translate(60px, 0px)" }}>{year}年</p>
-            <div style={{ transform: "translate(150px, -45px)" }}>
-              <button onClick={handleAutoPlayToggle}>
-                {isAutoPlay ? "停止" : "再生"}
-              </button>
-            </div>
-          </div>
 
-          <div style={{ transform: "translate(-50px, 120px)" }}>
-            <button
-              variant="contained"
-              onClick={handleToggleChart}
-              style={{
-                marginBottom: "10px",
-                transform: "translate(370px, 0px)",
-              }}
-            >
-              {showPopulationChart ? "グラフを表示" : "時代背景を表示"}
-            </button>
             <div
               style={{
-                width: "500px",
-                height: "250px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <p style={{ padding: "0 12px" }}>{year}年</p>
+
+              <div>
+                <button onClick={handleAutoPlayToggle}>
+                  {isAutoPlay ? "停止" : "再生"}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              margin: "24px 0 ",
+              background: "white",
+              padding: "5px",
+              borderRadius: "3px",
+              boxShadow: "0 0 5px rgba(0,0,0,0.3)",
+              // transform: "translate(740px, 225px)",
+            }}
+          >
+            人口グラフを表示
+            <div
+              style={{
+                width: "700px",
+                height: "225px",
                 border: "1px solid #ccc",
                 padding: "10px",
                 overflowY: "auto",
                 backgroundColor: "white",
               }}
             >
-              {showPopulationChart ? (
+              <PopulationChart
+                data={fullData}
+                selectedReligion={selectedReligion}
+              />
+
+              {/* {showPopulationChart ? (
                 <pre>{religionInfo}</pre>
               ) : (
                 <PopulationChart
                   data={fullData}
                   selectedReligion={selectedReligion}
                 />
-              )}
+              )} */}
+            </div>
+          </div>
+          {/* 追加 */}
+          <div
+            style={{
+              background: "white",
+              padding: "5px",
+              margin: "24px 0 ",
+              borderRadius: "3px",
+              boxShadow: "0 0 5px rgba(0,0,0,0.3)",
+              // transform: "translate(740px, 525px)",
+            }}
+          >
+            時代背景を表示
+            <div
+              style={{
+                width: "700px",
+                height: "225px",
+                border: "1px solid #ccc",
+                padding: "10px",
+                overflowY: "auto",
+                backgroundColor: "white",
+              }}
+            >
+              <pre>{religionInfo}</pre>
             </div>
           </div>
         </div>
@@ -193,6 +217,4 @@ const App = () => {
   );
 };
 
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
+export default App;

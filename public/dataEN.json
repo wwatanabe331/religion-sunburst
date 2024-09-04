@@ -50,7 +50,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 120950 },
             { "name": "Shintoists", "value": 55228775 }
@@ -116,7 +116,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 921828 },
             { "name": "Confucians", "value": 2646410 },
@@ -183,7 +183,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 1182738 },
             { "name": "Confucians", "value": 2956319 },
@@ -250,7 +250,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 1357348 },
             { "name": "Confucians", "value": 3593958 },
@@ -318,7 +318,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 1704647 },
             { "name": "Confucians", "value": 4441376 },
@@ -386,7 +386,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 1981266 },
             { "name": "Confucians", "value": 5286931 },
@@ -455,7 +455,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 2895296 },
             { "name": "Confucians", "value": 5174923 },
@@ -524,7 +524,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 3875752 },
             { "name": "Confucians", "value": 5470087 },
@@ -592,7 +592,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 4627936 },
             { "name": "Confucians", "value": 1169027 },
@@ -660,7 +660,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 5884833 },
             { "name": "Confucians", "value": 1300279 },
@@ -729,7 +729,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 6521306 },
             { "name": "Confucians", "value": 1273987 },
@@ -799,7 +799,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 9800202 },
             { "name": "Confucians", "value": 3816742 },
@@ -869,7 +869,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 12295370 },
             { "name": "Confucians", "value": 3850741 },
@@ -939,7 +939,7 @@
           ]
         },
         {
-          "name": "East Asian",
+          "name": "Chinese",
           "children": [
             { "name": "Taoism", "value": 9879877 },
             { "name": "Confucians", "value": 3987537 },
