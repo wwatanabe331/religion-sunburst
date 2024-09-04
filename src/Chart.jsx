@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as d3 from "d3";
 import "./styles.css";
+import { RELIGION_IMG } from "./ReligionImg";
 
 const Chart = ({
   data,
@@ -76,6 +77,13 @@ const Chart = ({
       setSelectedReligion(null);
     } else {
       setSelectedSegment(d);
+
+      const value = formatNumber(d.value);
+      console.log(value);
+      const religion = RELIGION_IMG.filter(
+        (religion) => religion.source == value
+      );
+      console.log(religion);
       setSelectedValue(formatNumber(d.value));
       // const info = findReligionInfo(d.data.name, religionInfoData.Religions);
       const info = findReligionInfo(d.data.name, religionInfoData.宗教);

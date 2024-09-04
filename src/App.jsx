@@ -4,8 +4,9 @@ import PopulationChart from "./PopulationChart";
 import "./styles.css";
 import { Slider } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import religionInfoData from "/public/religion_info.json";
+import religionInfoData from "/public/allInfo.json";
 import initialData from "/public/data.json";
+import { RELIGION_IMG } from "./ReligionImg";
 
 //変更2
 const valuetext = (value) => {
@@ -21,12 +22,19 @@ const CustomizedSlider = styled(Slider)`
 `;
 
 const marks = [
+  { value: 1945, label: "" },
   { value: 1950, label: "1950年" },
+  { value: 1955, label: "" },
   { value: 1960, label: "1960年" },
+  { value: 1965, label: "" },
   { value: 1970, label: "1970年" },
+  { value: 1975, label: "" },
   { value: 1980, label: "1980年" },
+  { value: 1985, label: "" },
   { value: 1990, label: "1990年" },
+  { value: 1995, label: "" },
   { value: 2000, label: "2000年" },
+  { value: 2005, label: "" },
   { value: 2010, label: "2010年" },
 ];
 
@@ -40,6 +48,8 @@ const App = () => {
   const [selectedReligion, setSelectedReligion] = useState(null);
   //変更1
   const [fullData] = useState(initialData);
+
+  console.log(selectedValue);
 
   useEffect(() => {
     const selectedYearData = fullData.children.find(
@@ -95,20 +105,31 @@ const App = () => {
             height={700}
           />
 
-          {selectedValue !== null && (
-            <div
-              style={{
-                background: "white",
-                padding: "5px",
-                borderRadius: "3px",
-                boxShadow: "0  5px rgba(0,0,0,0.3)",
-                width: "200px",
-                transform: `translate(5px, -700px)`,
-              }}
-            >
-              人口: {selectedValue}
-            </div>
-          )}
+          <div>
+            {selectedValue !== null && (
+              <div
+                style={{
+                  background: "white",
+                  padding: "5px",
+                  borderRadius: "3px",
+                  boxShadow: "0  5px rgba(0,0,0,0.3)",
+                  width: "200px",
+                  transform: `translate(5px, -700px)`,
+                  display: "flex",
+                }}
+              >
+                <img
+                  // src={`/religionImg/${
+                  //   RELIGION_IMG.filter(
+                  //     (religion) => religion.source === selectedValue
+                  //   )
+                  // }.png`}
+                  style={{ width: 50, paddingRight: "10px" }}
+                />{" "}
+                信者数: {selectedValue}
+              </div>
+            )}
+          </div>
         </div>
 
         <div
@@ -160,7 +181,7 @@ const App = () => {
               // transform: "translate(740px, 225px)",
             }}
           >
-            人口グラフを表示
+            信者数をグラフで表示
             <div
               style={{
                 width: "700px",
@@ -197,7 +218,7 @@ const App = () => {
               // transform: "translate(740px, 525px)",
             }}
           >
-            時代背景を表示
+            解説及び時代背景を表示
             <div
               style={{
                 width: "700px",
