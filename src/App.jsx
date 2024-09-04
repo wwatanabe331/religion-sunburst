@@ -118,15 +118,18 @@ const App = () => {
                   display: "flex",
                 }}
               >
-                <img
-                  // src={`/religionImg/${
-                  //   RELIGION_IMG.filter(
-                  //     (religion) => religion.source === selectedValue
-                  //   )
-                  // }.png`}
-                  style={{ width: 50, paddingRight: "10px" }}
-                />{" "}
-                信者数: {selectedValue}
+                {selectedValue.name === undefined ? (
+                  <img
+                    src={`/Question.png`}
+                    style={{ width: 50, paddingRight: "10px" }}
+                  />
+                ) : (
+                  <img
+                    src={`/${selectedValue.name}.png`}
+                    style={{ width: 50, paddingRight: "10px" }}
+                  />
+                )}
+                信者数: {selectedValue.value}
               </div>
             )}
           </div>

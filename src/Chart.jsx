@@ -78,13 +78,14 @@ const Chart = ({
     } else {
       setSelectedSegment(d);
 
-      const value = formatNumber(d.value);
-      console.log(value);
-      const religion = RELIGION_IMG.filter(
-        (religion) => religion.source == value
+      const religionName = RELIGION_IMG.find(
+        (religion) => religion.source === d.data.name
       );
-      console.log(religion);
-      setSelectedValue(formatNumber(d.value));
+
+      setSelectedValue({
+        value: formatNumber(d.value),
+        name: religionName == undefined ? religionName : religionName.religion,
+      });
       // const info = findReligionInfo(d.data.name, religionInfoData.Religions);
       const info = findReligionInfo(d.data.name, religionInfoData.宗教);
       setReligionInfo(info || `No information available for ${d.data.name}`);
