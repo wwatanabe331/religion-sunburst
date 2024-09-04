@@ -77,7 +77,16 @@ button:disabled {
   height: 100px;
 }
 
-/* スケール設定 */
-.controls-container {
-  width: 450px;
+.leftContiner {
+  width: 700px;
+}
+
+.rightContiner {
+  width: 700px;
+}
+
+@media screen and (max-width: 699px) {
+  .leftContiner {
+    width: 100%;
+  }
 }

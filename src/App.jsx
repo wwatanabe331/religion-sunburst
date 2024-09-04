@@ -6,7 +6,6 @@ import { Slider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import religionInfoData from "/public/allInfo.json";
 import initialData from "/public/data.json";
-import { RELIGION_IMG } from "./ReligionImg";
 
 //変更2
 const valuetext = (value) => {
@@ -92,8 +91,8 @@ const App = () => {
       <div className="header">
         <h1>Religion Sunburst</h1>
       </div>
-      <div style={{ display: "flex" }}>
-        <div>
+      <div style={{ display: "flex", flexWrap: "wrap", position: "relative" }}>
+        <div className="leftContiner">
           <Chart
             data={data} // 年ごとのデータを渡す
             setSelectedValue={setSelectedValue}
@@ -105,7 +104,7 @@ const App = () => {
             height={700}
           />
 
-          <div>
+          <div className="rightContiner">
             {selectedValue !== null && (
               <div
                 style={{
@@ -114,7 +113,9 @@ const App = () => {
                   borderRadius: "3px",
                   boxShadow: "0  5px rgba(0,0,0,0.3)",
                   width: "200px",
-                  transform: `translate(5px, -700px)`,
+                  position: "absolute",
+                  left: "20px",
+                  top: "10px",
                   display: "flex",
                 }}
               >
@@ -135,17 +136,22 @@ const App = () => {
           </div>
         </div>
 
-        <div
-
-        // className="controls-container"
-        // style={{ transform: `translate(-130px, 0px)` }}
-        >
+        <div style={{ flex: 1 }}>
           {/* ボタンを消した*/}
           {/* <div style={{ transform: "translate(-100px, 0px)" }}> */}
-          <div>
+          <div
+            style={{
+              width: "100%",
+              // display: "flex",
+              // alignContent: "center",
+              // flexDirection: "column",
+              // alignItem: "center",
+              // margin: "10% 10%",
+            }}
+          >
             <CustomizedSlider
               aria-label="Year"
-              style={{ width: "628px", height: "15px", margin: "0 36px" }}
+              style={{ width: "80%", height: "15px", margin: "0 10%" }}
               defaultValue={1945}
               getAriaValueText={valuetext}
               valueLabelDisplay="auto"
@@ -176,23 +182,24 @@ const App = () => {
           </div>
           <div
             style={{
-              margin: "24px 0 ",
-              background: "white",
-              padding: "5px",
-              borderRadius: "3px",
-              boxShadow: "0 0 5px rgba(0,0,0,0.3)",
+              margin: "24px 10px ",
+              // background: "white",
+              // padding: "5px",
+              // borderRadius: "3px",
+              // boxShadow: "0 0 5px rgba(0,0,0,0.3)",
               // transform: "translate(740px, 225px)",
             }}
           >
             信者数をグラフで表示
             <div
               style={{
-                width: "700px",
+                width: "95%",
                 height: "225px",
                 border: "1px solid #ccc",
                 padding: "10px",
                 overflowY: "auto",
                 backgroundColor: "white",
+                margin: "5px 5px",
               }}
             >
               <PopulationChart
@@ -213,23 +220,24 @@ const App = () => {
           {/* 追加 */}
           <div
             style={{
-              background: "white",
-              padding: "5px",
-              margin: "24px 0 ",
-              borderRadius: "3px",
-              boxShadow: "0 0 5px rgba(0,0,0,0.3)",
-              // transform: "translate(740px, 525px)",
+              // background: "white",
+              // padding: "5px",
+              margin: "24px 10px ",
+              // borderRadius: "3px",
+              // boxShadow: "0 0 5px rgba(0,0,0,0.3)",
+              // // transform: "translate(740px, 525px)",
             }}
           >
             解説及び時代背景を表示
             <div
               style={{
-                width: "700px",
+                width: "95%",
                 height: "225px",
                 border: "1px solid #ccc",
                 padding: "10px",
                 overflowY: "auto",
                 backgroundColor: "white",
+                margin: "5px 5px",
               }}
             >
               <pre>{religionInfo}</pre>

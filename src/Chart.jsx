@@ -9,8 +9,8 @@ const Chart = ({
   setReligionInfo,
   religionInfoData,
   setSelectedReligion,
-  width = 700,
-  height = 700,
+  width = "100%",
+  height = "100%",
 }) => {
   const [selectedSegment, setSelectedSegment] = useState(null);
 
@@ -100,7 +100,7 @@ const Chart = ({
   };
 
   return (
-    <svg width={width} height={height} onClick={handleChartClick}>
+    <svg viewBox={`0 0 ${width} ${height}`} onClick={handleChartClick}>
       <g transform={`translate(${width / 2}, ${height / 2})`}>
         {root
           .descendants()
