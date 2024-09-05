@@ -240,7 +240,7 @@ const App = () => {
                 margin: "5px 5px",
               }}
             >
-              <pre>{religionInfo}</pre>
+              <pre style={{ whiteSpace: "pre-wrap" }}>{religionInfo}</pre>
             </div>
           </div>
         </div>

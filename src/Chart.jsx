@@ -88,7 +88,7 @@ const Chart = ({
       });
       // const info = findReligionInfo(d.data.name, religionInfoData.Religions);
       const info = findReligionInfo(d.data.name, religionInfoData.宗教);
-      setReligionInfo(info || `No information available for ${d.data.name}`);
+      setReligionInfo(info || `${d.data.name}の解説及び時代背景はありません。`);
       setSelectedReligion(d.data.name);
     }
   };
